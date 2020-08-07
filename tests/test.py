@@ -4,6 +4,9 @@ from json import loads
 from src.person import Person
 from src.magiclist import MagicList
 
+NO_TOKEN_MSG = "Couldn't get access token."
+NO_NORMALIZE_MSG = "Couldn't get the normalize data."
+
 
 def test_api():
     """Test normalize API"""
@@ -12,6 +15,8 @@ def test_api():
                       headers={'Content-Type': 'application/json'})
     if r.ok:
         access_token = loads(r.content)['access_token']
+    else:
+        print(NO_TOKEN_MSG)
 
     r = requests.post('http://localhost:8888/normalize',
                       json={'data': [{'metadata': 'not interesting', 'name': 'device', 'strVal': 'iPhone'},
@@ -19,6 +24,8 @@ def test_api():
                       headers={'Content-Type': 'application/json', 'Authorization': f'Bearer {access_token}'})
     if r.ok:
         print(loads(r.content))
+    else:
+        print(NO_NORMALIZE_MSG)
 
 
 def test_magic_list():
