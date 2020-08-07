@@ -6,7 +6,7 @@ setup(
     author="shalev",
     author_email="svkh98@gmail.com",
     description="Shalev's Polyrize",
-    url="https://github.com/hotshot21/sampleproject",
+    url="https://github.com/hoshot21/shalev-polyrize",
     packages=find_packages(),
     install_requires=['sanic', 'sanic_jwt', 'requests'],
     python_requires='>=3.8',
