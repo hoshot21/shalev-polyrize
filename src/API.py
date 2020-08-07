@@ -5,6 +5,9 @@ from sanic_jwt.decorators import protected
 
 from src.user import authenticate
 
+NAME = "name"
+VAL = "val"
+
 app = Sanic("Shalev's App")
 initialize(app, authenticate=authenticate)
 
@@ -13,7 +16,7 @@ initialize(app, authenticate=authenticate)
 @protected()
 async def normalize(request):
     """Normalizes the input JSON"""
-    return json({d["name"]: d[max([key for key in d if "val" in key.lower()])] for d in request.json.get("data")})
+    return json({d[NAME]: d[max([key for key in d if VAL in key.lower()])] for d in request.json.get("data")})
 
 
 if __name__ == "__main__":
