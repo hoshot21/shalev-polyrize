@@ -1,0 +1,18 @@
+service: shalevPolyrize
+
+functions:
+  normalize:
+    handler: handler.normalize
+    events:
+      - http:
+          path: normalize
+          method: post
+
+custom:
+  pythonRequirements:
+    dockerFile: ./Dockerfile
+
+package:
+  exclude:
+    - .idea/**
+    - __pycache__/**

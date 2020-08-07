@@ -1,0 +1,6 @@
+curl -o- -L https://slss.io/install | bash
+serverless
+serverless create --template aws-python3 --name shalev-polyrize-service
+serverless plugin install -n serverless-python-requirements
+serverless package --stage production
+serverless deploy --stage production
